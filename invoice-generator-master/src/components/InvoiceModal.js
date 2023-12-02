@@ -131,7 +131,7 @@ class InvoiceModal extends React.Component {
               </Row>
               <Row>
                 {" "}
-                <Col md={{ span: 6, offset: 0 }}>
+                <Col md={{ span: 6, offset: 8 }}>
                   <div className="fw-bold mt-2">
                     SLD Fitment date: {this.props.info.dateOfIssue || ""}
                   </div>
