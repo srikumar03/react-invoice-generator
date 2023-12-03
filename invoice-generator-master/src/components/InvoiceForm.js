@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import dateFormat from "dateformat";
+
 // import InvoiceItem from "./InvoiceItem";
 import InvoiceModal from "./InvoiceModal";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -15,24 +17,30 @@ class InvoiceForm extends React.Component {
     this.state = {
       isOpen: false,
 
-      currency: "$",
-      currentDate: "",
       invoiceNumber: 1,
+
+      currentDate: "",
       dateOfIssue: "",
-      billTo: "",
-      billToEmail: "",
-      billToAddress: "",
-      billFrom: "",
-      billFromEmail: "",
-      billFromAddress: "",
-      notes: "",
-      total: "0.00",
-      subTotal: "0.00",
-      taxRate: "",
-      taxAmmount: "0.00",
-      discountRate: "",
-      discountAmmount: "0.00",
+      Sldto: "",
+      SLDUINno: "",
+      SealNo: "",
+      Ro: "",
+      SLDmake: "",
+      SLDModel: "",
+      vrn: "",
+      ChassisNo: "",
+      EngineNo: "",
+      vcolor: "",
+      vmodel: "",
+      vfuel: "",
+      TACCOPNo: "",
+      TACCOPdate: "",
+      vmake: "",
+      speed: "",
+      fcn: "MERCYDA",
     };
+    this.handleReset = this.handleReset.bind(this);
+
     this.state.items = [
       {
         id: 0,
@@ -44,6 +52,42 @@ class InvoiceForm extends React.Component {
     ];
     this.editField = this.editField.bind(this);
   }
+
+  handleReset() {
+    this.setState({
+      isOpen: false,
+      invoiceNumber: 1,
+      currentDate: "",
+      dateOfIssue: "",
+      Sldto: "",
+      SLDUINno: "",
+      SealNo: "",
+      Ro: "",
+      SLDmake: "",
+      SLDModel: "",
+      vrn: "",
+      ChassisNo: "",
+      EngineNo: "",
+      vcolor: "",
+      vmodel: "",
+      vfuel: "",
+      TACCOPNo: "",
+      TACCOPdate: "",
+      vmake: "",
+      speed: "",
+      fcn: "MERCYDA",
+      items: [
+        {
+          id: 0,
+          name: "",
+          description: "",
+          price: "1.00",
+          quantity: 1,
+        },
+      ],
+    });
+  }
+
   componentDidMount(prevProps) {
     this.handleCalculateTotal();
   }
@@ -143,50 +187,37 @@ class InvoiceForm extends React.Component {
   render() {
     return (
       <Form onSubmit={this.openModal}>
-        <h4 className="text-center fw-bolder mt-4" style={{}}>
-          SLD FITMENT CERTIFICATE GENERATOR
-        </h4>
+        <div className="one">
+          <h2>SLD FITMENT CERTIFICATE GENERATOR</h2>
+        </div>
         <Row>
-          <Col md={8} lg={9}>
+          <Col md={12} lg={12}>
             <Card className="p-4 p-xl-5 my-3 my-xl-4">
-              <div className="d-flex flex-row align-items-start justify-content-between mb-3">
+              <div className="d-flex flex-row align-items-start justify-content-between mb-1">
                 <div class="d-flex flex-column">
                   <div className="d-flex flex-column">
                     <div class="mb-2">
                       <span className="fw-bold">Current&nbsp;Date:&nbsp;</span>
                       <span className="current-date">
-                        {new Date().toLocaleDateString()}
+                        {dateFormat(
+                          new Date().toLocaleDateString(),
+                          "yyyy-mm-dd"
+                        )}
                       </span>
                     </div>
                   </div>
-                  <div className="d-flex flex-row align-items-center">
-                    <span className="fw-bold d-block me-2">
-                      SLD Fitment Date:
-                    </span>
-                    <Form.Control
-                      type="date"
-                      value={this.state.dateOfIssue}
-                      name={"dateOfIssue"}
-                      onChange={(event) => this.editField(event)}
-                      style={{
-                        maxWidth: "150px",
-                      }}
-                      required="required"
-                    />
-                  </div>
                 </div>
                 <div className="d-flex flex-row align-items-center">
-                  <span className="fw-bold me-2">
-                    Invoice&nbsp;Number:&nbsp;
+                  <span className="fw-bold d-block me-2">
+                    SLD Fitment Date:
                   </span>
                   <Form.Control
-                    type="number"
-                    value={this.state.invoiceNumber}
-                    name={"invoiceNumber"}
+                    type="date"
+                    value={this.state.dateOfIssue}
+                    name={"dateOfIssue"}
                     onChange={(event) => this.editField(event)}
-                    min="1"
                     style={{
-                      maxWidth: "70px",
+                      maxWidth: "150px",
                     }}
                     required="required"
                   />
@@ -194,76 +225,217 @@ class InvoiceForm extends React.Component {
               </div>
               <hr className="my-4" />
               <Row className="mb-5">
-                <Col>
+                <Col className="col-12 col-lg-6">
                   <Form.Label className="fw-bold">SLD To:</Form.Label>
                   <Form.Control
-                    placeholder={"To which RTO "}
+                    placeholder={"Eg : ERODE RTO"}
                     rows={3}
-                    value={this.state.billTo}
+                    value={this.state.Sldto}
                     type="text"
-                    name="billTo"
-                    className="my-2"
+                    name="Sldto"
+                    className="mb-2"
                     onChange={(event) => this.editField(event)}
                     autoComplete="name"
                     required="required"
                   />
 
+                  <Form.Label className="fw-bold">SLD UIN no:</Form.Label>
                   <Form.Control
-                    placeholder={"Email address"}
-                    value={this.state.billToEmail}
-                    type="email"
-                    name="billToEmail"
-                    className="my-2"
+                    placeholder={"Eg : ABCD13245"}
+                    value={this.state.SLDUINno}
+                    type="text"
+                    name="SLDUINno"
+                    className="mb-2"
                     onChange={(event) => this.editField(event)}
-                    autoComplete="email"
                     required="required"
                   />
+
+                  <Form.Label className="fw-bold">Seal No:</Form.Label>
                   <Form.Control
-                    placeholder={"Billing address"}
-                    value={this.state.billToAddress}
+                    placeholder={"Eg : ABC000123"}
+                    value={this.state.SealNo}
                     type="text"
-                    name="billToAddress"
-                    className="my-2"
+                    name="SealNo"
+                    className="mb-2"
                     autoComplete="address"
                     onChange={(event) => this.editField(event)}
                     required="required"
                   />
-                </Col>
-                <Col>
-                  <Form.Label className="fw-bold">Bill from:</Form.Label>
+
+                  <Form.Label className="fw-bold">R/o:</Form.Label>
                   <Form.Control
-                    placeholder={"Who is this invoice from?"}
+                    placeholder={'Eg : ("MAMARATHUPALAYAM",ERODE,638004,TN)'}
                     rows={3}
-                    value={this.state.billFrom}
+                    value={this.state.Ro}
                     type="text"
-                    name="billFrom"
-                    className="my-2"
+                    name="Ro"
+                    className="mb-2"
                     onChange={(event) => this.editField(event)}
                     autoComplete="name"
                     required="required"
                   />
+
+                  <Form.Label className="fw-bold">SLD Make:</Form.Label>
                   <Form.Control
-                    placeholder={"Email address"}
-                    value={this.state.billFromEmail}
+                    placeholder={"Eg : Mercydaz Instrumentation"}
+                    value={this.state.SLDmake}
                     type="email"
-                    name="billFromEmail"
-                    className="my-2"
+                    name="SLDmake"
+                    className="mb-2"
                     onChange={(event) => this.editField(event)}
-                    autoComplete="email"
                     required="required"
                   />
+
+                  <Form.Label className="fw-bold">SLD Model:</Form.Label>
                   <Form.Control
-                    placeholder={"Billing address"}
-                    value={this.state.billFromAddress}
+                    placeholder={"Eg : ABC123"}
+                    value={this.state.SLDModel}
                     type="text"
-                    name="billFromAddress"
-                    className="my-2"
+                    name="SLDModel"
+                    className="mb-2"
                     autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+                  <Form.Label className="fw-bold">
+                    Vehicle Registration Number:
+                  </Form.Label>
+                  <Form.Control
+                    placeholder={"TN01AA3690"}
+                    rows={3}
+                    value={this.state.vrn}
+                    type="text"
+                    name="vrn"
+                    className="mb-2"
+                    onChange={(event) => this.editField(event)}
+                    autoComplete="name"
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">Chassis No:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : WKABC4GM0053691"}
+                    value={this.state.ChassisNo}
+                    type="text"
+                    name="ChassisNo"
+                    className="mb-2"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+                </Col>
+                {/* ************************************************************************************************************* */}
+                <Col className="col-12 col-lg-6">
+                  <Form.Label className="fw-bold">Engine No:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : SLCAB1236"}
+                    value={this.state.EngineNo}
+                    type="text"
+                    name="EngineNo"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">Vehicle Color:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : BLUE"}
+                    value={this.state.vcolor}
+                    type="text"
+                    name="vcolor"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+                  <Form.Label className="fw-bold">Vehicle Model:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : SWARAJ MAZDA 3500"}
+                    value={this.state.vmodel}
+                    type="text"
+                    name="vmodel"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+                  <Form.Label className="fw-bold">Vehicle Fuel:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : DIESEL"}
+                    value={this.state.vfuel}
+                    type="text"
+                    name="vfuel"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">TAC/COP No:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : AA1234"}
+                    value={this.state.TACCOPNo}
+                    type="text"
+                    name="TACCOPNo"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">TAC/COP Date:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : SLCAB1236"}
+                    value={this.state.TACCOPdate}
+                    type="date"
+                    name="TACCOPdate"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">Vehicle Make :</Form.Label>
+                  <Form.Control
+                    placeholder={"ABC ISUZU LTD"}
+                    rows={3}
+                    value={this.state.vmake}
+                    type="text"
+                    name="vmake"
+                    className="mb-2"
+                    onChange={(event) => this.editField(event)}
+                    autoComplete="name"
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">Set Speed :</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : 60"}
+                    value={this.state.speed}
+                    type="number"
+                    max={350}
+                    name="speed"
+                    className="mb-2"
                     onChange={(event) => this.editField(event)}
                     required="required"
                   />
                 </Col>
               </Row>
+              {/* ------------------------- */}
+              <Form.Label className="fw-bold text-center">
+                Fitment Center Name:{" "}
+              </Form.Label>
+              <Form.Control
+                placeholder={"Eg : MERCYDA"}
+                value={this.state.fcn}
+                type="text"
+                max={350}
+                name="fcn"
+                className="mb-2 text-center"
+                onChange={(event) => this.editField(event)}
+                required="required"
+              />
+              {/* ------------------------- */}
               {/* <InvoiceItem
                 onItemizedItemEdit={this.onItemizedItemEdit.bind(this)}
                 onRowAdd={this.handleAddEvent.bind(this)}
@@ -271,52 +443,8 @@ class InvoiceForm extends React.Component {
                 currency={this.state.currency}
                 items={this.state.items}
               /> */}
-              <Row className="mt-4 justify-content-end">
-                <Col lg={6}>
-                  <div className="d-flex flex-row align-items-start justify-content-between">
-                    <span className="fw-bold">Subtotal:</span>
-                    <span>
-                      {this.state.currency}
-                      {this.state.subTotal}
-                    </span>
-                  </div>
-                  <div className="d-flex flex-row align-items-start justify-content-between mt-2">
-                    <span className="fw-bold">Discount:</span>
-                    <span>
-                      <span className="small ">
-                        ({this.state.discountRate || 0}%)
-                      </span>
-                      {this.state.currency}
-                      {this.state.discountAmmount || 0}
-                    </span>
-                  </div>
-                  <div className="d-flex flex-row align-items-start justify-content-between mt-2">
-                    <span className="fw-bold">Tax:</span>
-                    <span>
-                      <span className="small ">
-                        ({this.state.taxRate || 0}%)
-                      </span>
-                      {this.state.currency}
-                      {this.state.taxAmmount || 0}
-                    </span>
-                  </div>
-                  <hr />
-                  <div
-                    className="d-flex flex-row align-items-start justify-content-between"
-                    style={{
-                      fontSize: "1.125rem",
-                    }}
-                  >
-                    <span className="fw-bold">Total:</span>
-                    <span className="fw-bold">
-                      {this.state.currency}
-                      {this.state.total || 0}
-                    </span>
-                  </div>
-                </Col>
-              </Row>
-              <hr className="my-4" />
-              <Form.Label className="fw-bold">Notes:</Form.Label>
+
+              {/* <Form.Label className="fw-bold">Notes:</Form.Label>
               <Form.Control
                 placeholder="Thanks for your business!"
                 name="notes"
@@ -325,14 +453,37 @@ class InvoiceForm extends React.Component {
                 as="textarea"
                 className="my-2"
                 rows={1}
-              />
+              /> */}
             </Card>
           </Col>
-          <Col md={4} lg={3}>
+          <Col md={12} lg={12}>
+            <Row>
+              <Col>
+                <Button
+                  md={12}
+                  lg={5}
+                  type="submit"
+                  variant="success"
+                  className="d-block w-100  mx-auto my-3"
+                >
+                  Review PDF
+                </Button>
+              </Col>
+
+              <Col>
+                <Button
+                  md={12}
+                  lg={5}
+                  type="reset"
+                  onClick={this.handleReset}
+                  variant="danger"
+                  className="d-block w-100  mx-auto my-3"
+                >
+                  Reset
+                </Button>
+              </Col>
+            </Row>
             <div className="sticky-top pt-md-3 pt-xl-4">
-              <Button variant="primary" type="submit" className="d-block w-100">
-                Review Invoice
-              </Button>
               <InvoiceModal
                 showModal={this.state.isOpen}
                 closeModal={this.closeModal}
@@ -344,63 +495,6 @@ class InvoiceForm extends React.Component {
                 discountAmmount={this.state.discountAmmount}
                 total={this.state.total}
               />
-              <Form.Group className="mb-3">
-                <Form.Label className="fw-bold">Currency:</Form.Label>
-                <Form.Select
-                  onChange={(event) =>
-                    this.onCurrencyChange({ currency: event.target.value })
-                  }
-                  className="btn btn-light my-1"
-                  aria-label="Change Currency"
-                >
-                  <option value="$">USD (United States Dollar)</option>
-                  <option value="£">GBP (British Pound Sterling)</option>
-                  <option value="¥">JPY (Japanese Yen)</option>
-                  <option value="$">CAD (Canadian Dollar)</option>
-                  <option value="$">AUD (Australian Dollar)</option>
-                  <option value="$">SGD (Signapore Dollar)</option>
-                  <option value="¥">CNY (Chinese Renminbi)</option>
-                  <option value="₿">BTC (Bitcoin)</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group className="my-3">
-                <Form.Label className="fw-bold">Tax rate:</Form.Label>
-                <InputGroup className="my-1 flex-nowrap">
-                  <Form.Control
-                    name="taxRate"
-                    type="number"
-                    value={this.state.taxRate}
-                    onChange={(event) => this.editField(event)}
-                    className="bg-white border"
-                    placeholder="0.0"
-                    min="0.00"
-                    step="0.01"
-                    max="100.00"
-                  />
-                  <InputGroup.Text className="bg-light fw-bold text-secondary small">
-                    %
-                  </InputGroup.Text>
-                </InputGroup>
-              </Form.Group>
-              <Form.Group className="my-3">
-                <Form.Label className="fw-bold">Discount rate:</Form.Label>
-                <InputGroup className="my-1 flex-nowrap">
-                  <Form.Control
-                    name="discountRate"
-                    type="number"
-                    value={this.state.discountRate}
-                    onChange={(event) => this.editField(event)}
-                    className="bg-white border"
-                    placeholder="0.0"
-                    min="0.00"
-                    step="0.01"
-                    max="100.00"
-                  />
-                  <InputGroup.Text className="bg-light fw-bold text-secondary small">
-                    %
-                  </InputGroup.Text>
-                </InputGroup>
-              </Form.Group>
             </div>
           </Col>
         </Row>
