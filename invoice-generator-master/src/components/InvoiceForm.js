@@ -279,7 +279,7 @@ class InvoiceForm extends React.Component {
                   <Form.Control
                     placeholder={"Eg : Mercydaz Instrumentation"}
                     value={this.state.SLDmake}
-                    type="email"
+                    type="text"
                     name="SLDmake"
                     className="mb-2"
                     onChange={(event) => this.editField(event)}

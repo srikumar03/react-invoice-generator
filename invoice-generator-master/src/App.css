@@ -5,6 +5,10 @@
   background-color: #ff6600;
   border-radius: 70px;
 }
+::selection {
+  background-color: rgb(255, 191, 0);
+}
+
 body,
 html {
   font-size: 1rem;
