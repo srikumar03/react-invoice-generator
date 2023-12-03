@@ -116,12 +116,3 @@ hr {
   /* -o-transition: all 0.4s ease 0s; */
   transition: all 0.4s ease 0s;
 }
-.rbtn {
-  background-color: #ff7700;
-  border: #ff5500;
-  color: #080808;
-}
-.rbtn:hover {
-  background-color: #ff4400;
-  color: #080808;
-}
