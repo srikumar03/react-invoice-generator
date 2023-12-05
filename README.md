@@ -18,7 +18,7 @@ This project is an elegant and feature-rich invoice generator crafted with React
 
 2.  **Install Dependencies:**
     ```bash
-      cd react-invoice-generator/
+      cd react-invoice-generator/invoice-generator-master
       npm install html2canvas
       npm install react-icons
       npm install react-bootstrap
