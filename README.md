@@ -17,7 +17,6 @@ This project is an elegant and feature-rich invoice generator crafted with React
    git clone https://github.com/your-username/react-invoice-generator.git
 
 2.  **Install Dependencies:**
-3.  ```bash
     ```bash
       cd react-invoice-generator
       npm install html2canvas
@@ -26,7 +25,7 @@ This project is an elegant and feature-rich invoice generator crafted with React
       npm install
    
 
-4. **Open in Browser:**
+3. **Open in Browser:**
    Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
  **Customize to Your Heart's Content:**
