@@ -2,7 +2,9 @@
 
 Hello there! 👋 Welcome to the repository for my ReactJS invoice generator.
 
-This project is an elegant and feature-rich invoice generator crafted with ReactJS. Dive into the codebase to explore its dynamic functionalities, and feel free to customize it to suit your preferences.
+
+This project is an elegant and feature-rich invoice generator crafted with ReactJS. Explore its dynamic functionalities on your **PC or laptop**, and feel free to customize it to suit your preferences.
+
 
 ## Features ✨
 
