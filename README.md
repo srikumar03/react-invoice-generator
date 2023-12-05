@@ -14,16 +14,19 @@ This project is an elegant and feature-rich invoice generator crafted with React
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/react-invoice-generator.git ```
+   git clone https://github.com/your-username/react-invoice-generator.git
+
 2.  **Install Dependencies:**
-   ```bash
+3.  ```bash
+    ```bash
       cd react-invoice-generator
       npm install html2canvas
-npm install react-icons
-npm install react-bootstrap
-      npm install ```
+      npm install react-icons
+      npm install react-bootstrap
+      npm install
+   
 
-3. **Open in Browser:**
+4. **Open in Browser:**
    Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
  **Customize to Your Heart's Content:**
