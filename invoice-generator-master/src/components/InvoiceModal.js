@@ -37,11 +37,7 @@ function GenerateInvoice() {
     logging: true,
   }).then((canvas) => {
     const imgData = canvas.toDataURL("image/png", 1.0);
-    const pdf = new jsPDF({
-      orientation: "portrait",
-      unit: "pt",
-      format: [612, 792],
-    });
+    const pdf = new jsPDF();
 
     pdf.internal.scaleFactor = 1 / scale; // Adjust for the increased scale
     const imgProps = pdf.getImageProperties(imgData);
@@ -119,14 +115,6 @@ class InvoiceModal extends React.Component {
                   <div>{this.props.info.billToAddress || ""}</div>
                   <div>{this.props.info.billToEmail || ""}</div>
                 </Col>
-
-                <Col md={4}>
-                  <div className="fw-bold">Billed From:</div>
-                  <div>{this.props.info.billFrom || ""}</div>
-                  <div>{this.props.info.billFromAddress || ""}</div>
-                  <div>{this.props.info.billFromEmail || ""}</div>
-                  <div>{this.props.info.vfuel || ""}</div>
-                </Col>
               </Row>
               <Row>
                 {" "}
@@ -134,6 +122,12 @@ class InvoiceModal extends React.Component {
                   <div className="fw-bold mt-2 text-dark">
                     SLD Fitment date: {this.props.info.dateOfIssue || ""}
                   </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <b>Subject</b>: Endorsement of SLD UIN no: METN40170 and Seal
+                  No: MCD000352 in the vehicle registration No: TN33P4970
                 </Col>
               </Row>
               {/* 
