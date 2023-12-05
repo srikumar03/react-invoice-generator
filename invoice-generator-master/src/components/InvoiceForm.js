@@ -9,7 +9,7 @@ import dateFormat from "dateformat";
 
 // import InvoiceItem from "./InvoiceItem";
 import InvoiceModal from "./InvoiceModal";
-import InputGroup from "react-bootstrap/InputGroup";
+// import InputGroup from "react-bootstrap/InputGroup";
 
 class InvoiceForm extends React.Component {
   constructor(props) {
@@ -264,7 +264,7 @@ class InvoiceForm extends React.Component {
 
                   <Form.Label className="fw-bold">R/o:</Form.Label>
                   <Form.Control
-                    placeholder={'Eg : ("MAMARATHUPALAYAM",ERODE,638004,TN)'}
+                    placeholder={'Eg : "MAMARATHUPALAYAM",ERODE,638004,TN'}
                     rows={3}
                     value={this.state.Ro}
                     type="text"

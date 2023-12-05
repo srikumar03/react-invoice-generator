@@ -3,9 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
-import { BiPaperPlane, BiCloudDownload } from "react-icons/bi";
+import { BiCloudDownload } from "react-icons/bi";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -47,7 +46,7 @@ function GenerateInvoice() {
 
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-    pdf.save("invoice-001.pdf");
+    pdf.save("SLD.pdf");
   });
 }
 
@@ -60,13 +59,19 @@ class InvoiceModal extends React.Component {
       fontFamily: 'Georgia, "Times", "Times New Roman", serif',
       fontSize: "1rem",
     };
+    const customStyle2 = {
+      fontFamily: "Arial, Helvetica, sans-serif ",
+    };
+    const fow = {
+      fontWeight: "700",
+    };
     const line = {
       border: "1px solid transparent",
       borderBottomColor: "black",
     };
 
     return (
-      <div style={customStyle}>
+      <div style={customStyle2}>
         <Modal
           show={this.props.showModal}
           onHide={this.props.closeModal}
@@ -74,7 +79,7 @@ class InvoiceModal extends React.Component {
           centered
         >
           <div id="invoiceCapture">
-            <div className="d-flex flex-row justify-content-between align-items-start bg-light w-100 p-4">
+            <div className="d-flex flex-row justify-content-between align-items-start w-100 p-4">
               <div className="w-100">
                 <h4 className="fw-bold my-2 text-center" style={customStyle}>
                   <span
@@ -84,9 +89,8 @@ class InvoiceModal extends React.Component {
                       paddingBottom: "5px;",
                     }}
                   >
-                    <span style={line}> SLD FITMENT CERTIFICATE </span>
-                    <br />
-                  </span>
+                    <span style={line}> SLD FITMENT CERTIFICATE </span> <br />
+                  </span>{" "}
                   (Generated online in VAHAN)
                   {/* {this.props.info.billFrom || "Name"} */}
                 </h4>
@@ -101,33 +105,37 @@ class InvoiceModal extends React.Component {
             </div>
 
             <div className="p-4">
-              <Row className="mb-4">
+              <Row className="mb-4" style={customStyle2}>
                 <Col md={4}>
                   <div>To,</div>
                   <div>The Registering Authority</div>
                   <div>Transport Deportment</div>
-                  <div className="fw-bolder">
+                  <div style={fow}>
                     {" "}
                     {this.props.info.Sldto &&
                       this.props.info.Sldto.toUpperCase()}
                   </div>
+                </Col>
 
-                  <div>{this.props.info.billToAddress || ""}</div>
-                  <div>{this.props.info.billToEmail || ""}</div>
-                </Col>
-              </Row>
-              <Row>
-                {" "}
                 <Col md={{ span: 6, offset: 8 }}>
-                  <div className="fw-bold mt-2 text-dark">
-                    SLD Fitment date: {this.props.info.dateOfIssue || ""}
-                  </div>
+                  <span className=" mb-2" style={fow}>
+                    SLD Fitment date: -{this.props.info.dateOfIssue || ""}
+                  </span>{" "}
                 </Col>
               </Row>
-              <Row>
+              <Row style={customStyle2}>
                 <Col>
-                  <b>Subject</b>: Endorsement of SLD UIN no: METN40170 and Seal
-                  No: MCD000352 in the vehicle registration No: TN33P4970
+                  {" "}
+                  <span style={fow}>Subject</span> : Endorsement of SLD UIN no:{" "}
+                  <span style={fow}>
+                    {this.props.info.SLDUINno.toUpperCase()}
+                  </span>{" "}
+                  and Seal No:&nbsp;{" "}
+                  <span style={fow}>
+                    {this.props.info.SealNo.toUpperCase()}
+                  </span>{" "}
+                  in the vehicle registration No:&nbsp;{" "}
+                  <span style={fow}>{this.props.info.vrn.toUpperCase()}</span>{" "}
                 </Col>
               </Row>
               {/* 
@@ -136,6 +144,116 @@ class InvoiceModal extends React.Component {
                   {this.props.info.notes}
                 </div>
               )} */}
+
+              <Row className="my-3" style={customStyle2}>
+                <Col>Dear Sir,</Col>
+              </Row>
+              <Row style={customStyle2}>
+                <Col>
+                  It is to inform you that Mr/Ms.{" "}
+                  <span style={fow}>THE PRESIDENT CORRESPONDENT</span> .R/o: (
+                  <span style={fow}>{this.props.info.Ro.toUpperCase()}</span>)
+                  is fitted with SLD make:{" "}
+                  <span style={fow}>
+                    {this.props.info.SLDmake.toUpperCase()}
+                  </span>
+                  , Model:{" "}
+                  <span style={fow}>
+                    {this.props.info.SLDModel.toUpperCase()}
+                  </span>{" "}
+                  at our retro-fitment center in his/her vehicle registration
+                  number:{" "}
+                  <span style={fow}>{this.props.info.vrn.toUpperCase()}</span> ,
+                  Chassis No:{" "}
+                  <span style={fow}>
+                    {this.props.info.ChassisNo.toUpperCase()}
+                  </span>
+                  , Engine No:{" "}
+                  <span style={fow}>
+                    {this.props.info.EngineNo.toUpperCase()}
+                  </span>
+                  , Color:{" "}
+                  <span style={fow}>
+                    {this.props.info.vcolor.toUpperCase()}
+                  </span>
+                  , Vehicle Model:{" "}
+                  <span style={fow}>
+                    {this.props.info.vmodel.toUpperCase()}
+                  </span>
+                  , Fuel:{" "}
+                  <span style={fow}>{this.props.info.vfuel.toUpperCase()}</span>{" "}
+                  .
+                </Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  Our retro-fitment center is approved by state Government
+                  Transport Department for fitment of Speed Limiting Device.
+                </Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  According to TAC/COP No :{" "}
+                  <span style={fow}>
+                    {this.props.info.TACCOPNo.toUpperCase()}
+                  </span>{" "}
+                  Dated{" "}
+                  <span style={fow}>
+                    {this.props.info.TACCOPdate.toUpperCase()}
+                  </span>{" "}
+                  , the SLD so fitted is type approved by for the vehicle make :{" "}
+                  <span style={fow}>{this.props.info.vmake.toUpperCase()}</span>{" "}
+                  Vehicle Model :{" "}
+                  <span style={fow}>
+                    {this.props.info.vmodel.toUpperCase()}
+                  </span>{" "}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  The set speed of the vehicle is:{" "}
+                  <span style={fow}>{this.props.info.speed.toUpperCase()}</span>{" "}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  The SLD is duly sealed using Seal no:{" "}
+                  <span style={fow}>
+                    {this.props.info.SealNo.toUpperCase()}
+                  </span>{" "}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  Unique Identification Number of SLD is:{" "}
+                  <span style={fow}>
+                    {this.props.info.SLDUINno.toUpperCase()}
+                  </span>{" "}
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="my-5">
+                  Registration number of the vehicle is engraved on the SLD
+                  fitted.
+                </Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  <div>Thanking You </div>
+
+                  <div>(Authorized Signatory)</div>
+
+                  <div>
+                    {" "}
+                    Fitment Center Name:{" "}
+                    <span style={fow}>{this.props.info.fcn.toUpperCase()}</span>
+                  </div>
+                </Col>
+              </Row>
             </div>
           </div>
           <div className="pb-4 px-4">
