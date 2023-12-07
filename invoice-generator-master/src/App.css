@@ -2,7 +2,7 @@
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #ff6600;
+  background-color: #00a52c;
   border-radius: 70px;
 }
 ::selection {
@@ -21,12 +21,12 @@ body,
   font-size: 1rem;
   /* font-weight: 500; */
 }
-body,
+/* body,
 html,
 #root,
 .App {
   min-height: 100vh;
-}
+} */
 .btn {
   font-size: 1rem;
   font-weight: 500;
@@ -105,20 +105,50 @@ hr {
 
 /* === HEADING STYLE #1 === */
 .one {
-  margin-top: 3%;
+  /* margin-top: 10%; */
   text-align: center;
   text-transform: uppercase;
   padding-bottom: 5px;
 }
 
 .one h2 {
-  position: relative;
+  /* position: relative;
   padding: 0;
   margin: 0;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", sans-serif; */
 
   color: #080808;
   -webkit-transition: all 0.4s ease 0s;
   /* -o-transition: all 0.4s ease 0s; */
   transition: all 0.4s ease 0s;
+}
+
+/* ******************** */
+.brand {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0 2%;
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
+}
+
+.nav-right {
+  margin-left: auto;
+  padding: 0 2%;
+}
+
+.mx-background-top-linear {
+  background: linear-gradient(45deg, #00a52c 48%, #1b1e21 48%);
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.nav-link {
+  color: grey;
+}
+.nav-link:hover {
+  color: white;
+  text-shadow: #1e6d33 1px 1px 5px;
 }

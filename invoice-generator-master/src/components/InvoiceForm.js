@@ -187,7 +187,7 @@ class InvoiceForm extends React.Component {
   render() {
     return (
       <Form onSubmit={this.openModal}>
-        <div className="one">
+        <div className="one mt-1 mt-md-5 pt-md-5 pt-3">
           <h2>SLD FITMENT CERTIFICATE GENERATOR</h2>
         </div>
         <Row>

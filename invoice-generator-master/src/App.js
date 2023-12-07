@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Container from "react-bootstrap/Container";
-import InvoiceForm from "./components/InvoiceForm";
-
+import Pages from "./pages";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +21,7 @@ class App extends Component {
   }
 
   handleResize = () => {
-    // Update isPCView based on the window width
+    //isPCView based on the window width
     this.setState({ isPCView: window.innerWidth >= 768 });
   };
 
@@ -37,26 +36,31 @@ class App extends Component {
       >
         {isPCView ? (
           <Container>
-            <InvoiceForm />
+            <Pages />
           </Container>
         ) : (
           <div className="non-pc-view">
             {/* GIF for non-PC views as a clickable link */}
-            <a
-              href="#"
+            <button
+              type="button"
               onClick={() =>
                 alert(
                   "Please open this site on a PC or laptop for the optimal experience."
                 )
               }
-              
+              style={{
+                border: "none",
+                padding: 0,
+                backgroundColor: "transparent",
+                cursor: "pointer",
+              }}
             >
               <img
                 src="https://media.giphy.com/media/3oKGzgNfssFG1xlwC4/giphy.gif"
                 alt="Best Viewed on PC or Laptop"
-                style={{ maxWidth: "100%", height: "auto", cursor: "pointer" }}
+                style={{ maxWidth: "100%", height: "auto" }}
               />
-            </a>
+            </button>
 
             {/* Message for non-PC views */}
             <p className="text-center mt-3">
