@@ -41,8 +41,3 @@ Happy coding! 🌈
 
 
 
-https://github.com/srikumar03/react-invoice-generator/assets/96507579/8f313341-56fe-4b03-9ee8-3365f6837a9f
-
-
-
-
