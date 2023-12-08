@@ -2,7 +2,7 @@
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #00a52c;
+  background-color: #157347;
   border-radius: 70px;
 }
 ::selection {
@@ -138,7 +138,7 @@ hr {
 }
 
 .mx-background-top-linear {
-  background: linear-gradient(45deg, #00a52c 48%, #1b1e21 48%);
+  background: linear-gradient(45deg, #157347 48%, #1b1e21 48%);
 }
 
 .navbar {

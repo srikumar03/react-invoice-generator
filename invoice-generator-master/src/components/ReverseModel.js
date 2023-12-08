@@ -44,10 +44,9 @@ class ReverseModel extends React.Component {
     const customStyle2 = {
       fontFamily: "Arial, Helvetica, sans-serif ",
     };
-    const fow = {
-      fontWeight: "700",
-    };
+
     const line = {
+      fontFamily: "Arial, Helvetica, sans-serif ",
       border: "1px solid transparent",
       borderBottomColor: "black",
     };
@@ -60,7 +59,7 @@ class ReverseModel extends React.Component {
           size="lg"
           centered
         >
-          <div id="invoiceCapture1">
+          <div id="invoiceCapture1 p-5">
             <div className="d-flex flex-row justify-content-between align-items-start w-100 p-4">
               <div className="w-100">
                 <h4 className="fw-bold my-2 text-center" style={customStyle}>
@@ -68,12 +67,14 @@ class ReverseModel extends React.Component {
                     style={{
                       border: "10px solid black;",
                       borderBottomColor: "black;",
-                      paddingBottom: "5px;",
                     }}
                   >
-                    <span style={line}> SLD FITMENT CERTIFICATE </span> <br />
-                  </span>{" "}
-                  (Generated online in VAHAN)
+                    <span style={line}>
+                      CERTIFICATE OF INSTALLATION OF CAMERA & REVERSE SENSOR
+                    </span>
+                    <br />
+                  </span>
+
                   {/* {this.props.info.billFrom || "Name"} */}
                 </h4>
               </div>
@@ -87,153 +88,95 @@ class ReverseModel extends React.Component {
             </div>
 
             <div className="p-4">
-              <Row className="mb-4" style={customStyle2}>
-                <Col md={4}>
-                  <div>To,</div>
-                  <div>The Registering Authority</div>
-                  <div>Transport Deportment</div>
-                  <div style={fow}>
-                    {" "}
-                    {this.props.info.Sldto &&
-                      this.props.info.Sldto.toUpperCase()}
-                  </div>
-                </Col>
-
-                <Col md={{ span: 6, offset: 8 }}>
-                  <span className=" mb-2" style={fow}>
-                    SLD Fitment date: -{this.props.info.dateOfIssue || ""}
-                  </span>{" "}
-                </Col>
-              </Row>
               <Row style={customStyle2}>
                 <Col>
-                  {" "}
-                  <span style={fow}>Subject</span> : Endorsement of SLD UIN no:{" "}
-                  <span style={fow}>
-                    {this.props.info.SLDUINno.toUpperCase()}
+                  We the above named company certify that{" "}
+                  <span style={{ color: "darkred" }}>
+                    {this.props.info.companyorentityname.toUpperCase()}
                   </span>{" "}
-                  and Seal No:&nbsp;{" "}
-                  <span style={fow}>
-                    {this.props.info.SealNo.toUpperCase()}
+                  has been installation of{" "}
+                  <span style={{ color: "darkred" }}>
+                    {this.props.info.typeofcamera.toUpperCase()}
                   </span>{" "}
-                  in the vehicle registration No:&nbsp;{" "}
-                  <span style={fow}>{this.props.info.vrn.toUpperCase()}</span>{" "}
+                  and is hereby certifies as competent to install the named{" "}
+                  <span>{this.props.info.equipmentname.toUpperCase()}</span>{" "}
+                  equipment.
                 </Col>
               </Row>
-              {/* 
-              {this.props.info.notes && (
-                <div className="bg-light py-3 px-4 rounded">
-                  {this.props.info.notes}
-                </div>
-              )} */}
-
-              <Row className="my-3" style={customStyle2}>
-                <Col>Dear Sir,</Col>
+              <Row style={customStyle2} className="my-4">
+                <Col>
+                  <b>
+                    MODELS:{" "}
+                    <span style={line}>
+                      {this.props.info.model.toUpperCase()}
+                    </span>
+                  </b>
+                </Col>
               </Row>
+
               <Row style={customStyle2}>
                 <Col>
-                  It is to inform you that Mr/Ms.{" "}
-                  <span style={fow}>THE PRESIDENT CORRESPONDENT</span> .R/o: (
-                  <span style={fow}>{this.props.info.Ro.toUpperCase()}</span>)
-                  is fitted with SLD make:{" "}
-                  <span style={fow}>
-                    {this.props.info.SLDmake.toUpperCase()}
+                  The installation was carned out at{" "}
+                  <span>{this.props.info.RTOname.toUpperCase()}</span> Regional
+                  Transport Office on the dates listed and the named person has
+                  been issued With a certificate of competency.
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="my-2 mt-4">
+                  <b style={line}>INSTALLATION DELAILS</b>
+                </Col>
+              </Row>
+              <Row className="my-2">
+                <Col>REGISTRATION NO</Col>
+
+                <Col>
+                  {" :"}
+                  <span style={{ color: "darkred" }}>
+                    {this.props.info.regno.toUpperCase()}
                   </span>
-                  , Model:{" "}
-                  <span style={fow}>
-                    {this.props.info.SLDModel.toUpperCase()}
+                </Col>
+              </Row>
+              <Row className="my-2">
+                <Col>MAKE/MODEL</Col>
+                <Col>
+                  {":"}
+                  <span>{this.props.info.makemodel.toUpperCase()}</span>
+                </Col>
+              </Row>
+              <Row className="my-2">
+                <Col>CHASSIS NO</Col>
+                <Col>
+                  {":"}
+                  <span>{this.props.info.chassisno.toUpperCase()}</span>
+                </Col>
+              </Row>
+
+              <Row className="my-2">
+                <Col>NAME & ADDRESS</Col>
+                <Col>
+                  {":"}
+                  <span>{this.props.info.nameaddress.toUpperCase()}</span>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="my-3">
+                  I confirm that I installed{" "}
+                  <span style={{ color: "darkred" }}>
+                    {this.props.info.model.toUpperCase()}
                   </span>{" "}
-                  at our retro-fitment center in his/her vehicle registration
-                  number:{" "}
-                  <span style={fow}>{this.props.info.vrn.toUpperCase()}</span> ,
-                  Chassis No:{" "}
-                  <span style={fow}>
-                    {this.props.info.ChassisNo.toUpperCase()}
-                  </span>
-                  , Engine No:{" "}
-                  <span style={fow}>
-                    {this.props.info.EngineNo.toUpperCase()}
-                  </span>
-                  , Color:{" "}
-                  <span style={fow}>
-                    {this.props.info.vcolor.toUpperCase()}
-                  </span>
-                  , Vehicle Model:{" "}
-                  <span style={fow}>
-                    {this.props.info.vmodel.toUpperCase()}
-                  </span>
-                  , Fuel:{" "}
-                  <span style={fow}>{this.props.info.vfuel.toUpperCase()}</span>{" "}
-                  .
+                  is working as good condition and satisfied.
                 </Col>
               </Row>
 
               <Row>
                 <Col>
-                  Our retro-fitment center is approved by state Government
-                  Transport Department for fitment of Speed Limiting Device.
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  According to TAC/COP No :{" "}
-                  <span style={fow}>
-                    {this.props.info.TACCOPNo.toUpperCase()}
+                  <span className=" mb-2">
+                    DATE:{"    "}
+                    {this.props.info.dateOfIssue || ""}
                   </span>{" "}
-                  Dated{" "}
-                  <span style={fow}>
-                    {this.props.info.TACCOPdate.toUpperCase()}
-                  </span>{" "}
-                  , the SLD so fitted is type approved by for the vehicle make :{" "}
-                  <span style={fow}>{this.props.info.vmake.toUpperCase()}</span>{" "}
-                  Vehicle Model :{" "}
-                  <span style={fow}>
-                    {this.props.info.vmodel.toUpperCase()}
-                  </span>{" "}
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  The set speed of the vehicle is:{" "}
-                  <span style={fow}>{this.props.info.speed.toUpperCase()}</span>{" "}
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  The SLD is duly sealed using Seal no:{" "}
-                  <span style={fow}>
-                    {this.props.info.SealNo.toUpperCase()}
-                  </span>{" "}
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  Unique Identification Number of SLD is:{" "}
-                  <span style={fow}>
-                    {this.props.info.SLDUINno.toUpperCase()}
-                  </span>{" "}
-                </Col>
-              </Row>
-
-              <Row>
-                <Col className="my-5">
-                  Registration number of the vehicle is engraved on the SLD
-                  fitted.
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <div>Thanking You </div>
-
-                  <div>(Authorized Signatory)</div>
-
-                  <div>
-                    {" "}
-                    Fitment Center Name:{" "}
-                    <span style={fow}>{this.props.info.fcn.toUpperCase()}</span>
-                  </div>
                 </Col>
               </Row>
             </div>

@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import dateFormat from "dateformat";
 import ReverseModel from "./ReverseModel";
 
 class ReverseForm extends React.Component {
@@ -13,28 +12,17 @@ class ReverseForm extends React.Component {
     super(props);
     this.state = {
       isOpen: false,
-
-      invoiceNumber: 1,
-
-      currentDate: "",
-      dateOfIssue: "",
-      Sldto: "",
-      SLDUINno: "",
-      SealNo: "",
-      Ro: "",
-      SLDmake: "",
-      SLDModel: "",
-      vrn: "",
-      ChassisNo: "",
-      EngineNo: "",
-      vcolor: "",
-      vmodel: "",
-      vfuel: "",
-      TACCOPNo: "",
-      TACCOPdate: "",
-      vmake: "",
-      speed: "",
-      fcn: "MERCYDA",
+      dateOfIssue: new Date().toISOString().substr(0, 10),
+      typeofcamera: "",
+      companyorentityname: "",
+      equipmentname: "REVERSE SENSOR",
+      model: "REVERSE SENSOR & FRONT+BACK CAMERA",
+      RTOname: "",
+      regno: "",
+      makemodel: "",
+      chassisno: "",
+      cameraserialno: "",
+      nameaddress: "",
     };
     this.handleReset = this.handleReset.bind(this);
 
@@ -53,26 +41,16 @@ class ReverseForm extends React.Component {
   handleReset() {
     this.setState({
       isOpen: false,
-      invoiceNumber: 1,
-      currentDate: "",
-      dateOfIssue: "",
-      Sldto: "",
-      SLDUINno: "",
-      SealNo: "",
-      Ro: "",
-      SLDmake: "",
-      SLDModel: "",
-      vrn: "",
-      ChassisNo: "",
-      EngineNo: "",
-      vcolor: "",
-      vmodel: "",
-      vfuel: "",
-      TACCOPNo: "",
-      TACCOPdate: "",
-      vmake: "",
-      speed: "",
-      fcn: "Gtech Automotives",
+      dateOfIssue: new Date().toISOString().substr(0, 10),
+      typeofcamera: "",
+      companyorentityname: "",
+      equipmentname: "REVERSE SENSOR",
+      model: "REVERSE SENSOR & FRO.NT+BACK CAMERA",
+      RTOname: "",
+      regno: "",
+      makemodel: "",
+      chassisno: "",
+      nameaddress: "",
       items: [
         {
           id: 0,
@@ -191,23 +169,8 @@ class ReverseForm extends React.Component {
           <Col md={12} lg={12}>
             <Card className="p-4 p-xl-5 my-3 my-xl-4">
               <div className="d-flex flex-row align-items-start justify-content-between mb-1">
-                <div class="d-flex flex-column">
-                  <div className="d-flex flex-column">
-                    <div class="mb-2">
-                      <span className="fw-bold">Current&nbsp;Date:&nbsp;</span>
-                      <span className="current-date">
-                        {dateFormat(
-                          new Date().toLocaleDateString(),
-                          "yyyy-mm-dd"
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                </div>
                 <div className="d-flex flex-row align-items-center">
-                  <span className="fw-bold d-block me-2">
-                    SLD Fitment Date:
-                  </span>
+                  <span className="fw-bold d-block me-2">Issued Date:</span>
                   <Form.Control
                     type="date"
                     value={this.state.dateOfIssue}
@@ -223,86 +186,88 @@ class ReverseForm extends React.Component {
               <hr className="my-4" />
               <Row className="mb-5">
                 <Col className="col-12 col-lg-6">
-                  <Form.Label className="fw-bold">SLD To:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : ERODE RTO"}
-                    rows={3}
-                    value={this.state.Sldto}
-                    type="text"
-                    name="Sldto"
-                    className="mb-2"
-                    onChange={(event) => this.editField(event)}
-                    autoComplete="name"
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">SLD UIN no:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : ABCD13245"}
-                    value={this.state.SLDUINno}
-                    type="text"
-                    name="SLDUINno"
-                    className="mb-2"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">Seal No:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : ABC000123"}
-                    value={this.state.SealNo}
-                    type="text"
-                    name="SealNo"
-                    className="mb-2"
-                    autoComplete="address"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">R/o:</Form.Label>
-                  <Form.Control
-                    placeholder={'Eg : "MAMARATHUPALAYAM",ERODE,638004,TN'}
-                    rows={3}
-                    value={this.state.Ro}
-                    type="text"
-                    name="Ro"
-                    className="mb-2"
-                    onChange={(event) => this.editField(event)}
-                    autoComplete="name"
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">SLD Make:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : Mercydaz Instrumentation"}
-                    value={this.state.SLDmake}
-                    type="text"
-                    name="SLDmake"
-                    className="mb-2"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">SLD Model:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : ABC123"}
-                    value={this.state.SLDModel}
-                    type="text"
-                    name="SLDModel"
-                    className="mb-2"
-                    autoComplete="address"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
                   <Form.Label className="fw-bold">
-                    Vehicle Registration Number:
+                    Company or Entity Name:
                   </Form.Label>
                   <Form.Control
-                    placeholder={"TN01AA3690"}
+                    placeholder={"Eg : EZVIZ CIC SMART TRACKING"}
                     rows={3}
-                    value={this.state.vrn}
+                    value={this.state.companyorentityname}
                     type="text"
-                    name="vrn"
+                    name="companyorentityname"
+                    className="mb-2"
+                    onChange={(event) => this.editField(event)}
+                    autoComplete="name"
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">Type of Camera:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : WI-FI CAMERA"}
+                    value={this.state.typeofcamera}
+                    type="text"
+                    name="typeofcamera"
+                    className="mb-2"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">Equipment Name:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : SECURITY CAMERA"}
+                    value={this.state.equipmentname}
+                    type="text"
+                    name="equipmentname"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">Model Name:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : EZVIZ CIC WI-FI SECURITY CAMERA"}
+                    rows={3}
+                    value={this.state.model}
+                    type="text"
+                    name="model"
+                    className="mb-2"
+                    onChange={(event) => this.editField(event)}
+                    autoComplete="name"
+                    required="required"
+                  />
+
+                  <Form.Label className="fw-bold">RTO Name:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : PERUNDURAI"}
+                    value={this.state.RTOname}
+                    type="text"
+                    name="RTOname"
+                    className="mb-2"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+                </Col>
+                {/* ************************************************************************************************************* */}
+                <Col className="col-12 col-lg-6">
+                  <Form.Label className="fw-bold">Registration No:</Form.Label>
+                  <Form.Control
+                    placeholder={"Eg : TN33X0369"}
+                    value={this.state.regno}
+                    type="text"
+                    name="regno"
+                    className="mb-2"
+                    autoComplete="address"
+                    onChange={(event) => this.editField(event)}
+                    required="required"
+                  />
+                  <Form.Label className="fw-bold">Make/Model:</Form.Label>
+                  <Form.Control
+                    placeholder={"EICHER"}
+                    rows={3}
+                    value={this.state.makemodel}
+                    type="text"
+                    name="makemodel"
                     className="mb-2"
                     onChange={(event) => this.editField(event)}
                     autoComplete="name"
@@ -312,145 +277,29 @@ class ReverseForm extends React.Component {
                   <Form.Label className="fw-bold">Chassis No:</Form.Label>
                   <Form.Control
                     placeholder={"Eg : WKABC4GM0053691"}
-                    value={this.state.ChassisNo}
+                    value={this.state.chassisno}
                     type="text"
-                    name="ChassisNo"
+                    name="chassisno"
                     className="mb-2"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-                </Col>
-                {/* ************************************************************************************************************* */}
-                <Col className="col-12 col-lg-6">
-                  <Form.Label className="fw-bold">Engine No:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : SLCAB1236"}
-                    value={this.state.EngineNo}
-                    type="text"
-                    name="EngineNo"
-                    className="mb-2"
-                    autoComplete="address"
                     onChange={(event) => this.editField(event)}
                     required="required"
                   />
 
-                  <Form.Label className="fw-bold">Vehicle Color:</Form.Label>
+                  <Form.Label className="fw-bold">Name & Address:</Form.Label>
                   <Form.Control
-                    placeholder={"Eg : BLUE"}
-                    value={this.state.vcolor}
+                    placeholder={
+                      "Eg : Kongu Engineering College,Perundurai,Erode"
+                    }
+                    value={this.state.nameaddress}
                     type="text"
-                    name="vcolor"
+                    name="nameaddress"
                     className="mb-2"
                     autoComplete="address"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-                  <Form.Label className="fw-bold">Vehicle Model:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : SWARAJ MAZDA 3500"}
-                    value={this.state.vmodel}
-                    type="text"
-                    name="vmodel"
-                    className="mb-2"
-                    autoComplete="address"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-                  <Form.Label className="fw-bold">Vehicle Fuel:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : DIESEL"}
-                    value={this.state.vfuel}
-                    type="text"
-                    name="vfuel"
-                    className="mb-2"
-                    autoComplete="address"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">TAC/COP No:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : AA1234"}
-                    value={this.state.TACCOPNo}
-                    type="text"
-                    name="TACCOPNo"
-                    className="mb-2"
-                    autoComplete="address"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">TAC/COP Date:</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : SLCAB1236"}
-                    value={this.state.TACCOPdate}
-                    type="date"
-                    name="TACCOPdate"
-                    className="mb-2"
-                    autoComplete="address"
-                    onChange={(event) => this.editField(event)}
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">Vehicle Make :</Form.Label>
-                  <Form.Control
-                    placeholder={"ABC ISUZU LTD"}
-                    rows={3}
-                    value={this.state.vmake}
-                    type="text"
-                    name="vmake"
-                    className="mb-2"
-                    onChange={(event) => this.editField(event)}
-                    autoComplete="name"
-                    required="required"
-                  />
-
-                  <Form.Label className="fw-bold">Set Speed :</Form.Label>
-                  <Form.Control
-                    placeholder={"Eg : 60"}
-                    value={this.state.speed}
-                    type="number"
-                    max={350}
-                    name="speed"
-                    className="mb-2"
                     onChange={(event) => this.editField(event)}
                     required="required"
                   />
                 </Col>
               </Row>
-              {/* ------------------------- */}
-              <Form.Label className="fw-bold text-center">
-                Fitment Center Name:{" "}
-              </Form.Label>
-              <Form.Control
-                placeholder={"Eg : MERCYDA"}
-                value={this.state.fcn}
-                type="text"
-                max={350}
-                name="fcn"
-                className="mb-2 text-center"
-                onChange={(event) => this.editField(event)}
-                required="required"
-              />
-              {/* ------------------------- */}
-              {/* <InvoiceItem
-                onItemizedItemEdit={this.onItemizedItemEdit.bind(this)}
-                onRowAdd={this.handleAddEvent.bind(this)}
-                onRowDel={this.handleRowDel.bind(this)}
-                currency={this.state.currency}
-                items={this.state.items}
-              /> */}
-
-              {/* <Form.Label className="fw-bold">Notes:</Form.Label>
-              <Form.Control
-                placeholder="Thanks for your business!"
-                name="notes"
-                value={this.state.notes}
-                onChange={(event) => this.editField(event)}
-                as="textarea"
-                className="my-2"
-                rows={1}
-              /> */}
             </Card>
           </Col>
           <Col md={12} lg={12}>

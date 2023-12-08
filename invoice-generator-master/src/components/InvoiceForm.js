@@ -16,9 +16,7 @@ class InvoiceForm extends React.Component {
     super(props);
     this.state = {
       isOpen: false,
-
       invoiceNumber: 1,
-
       currentDate: "",
       dateOfIssue: "",
       Sldto: "",
@@ -40,7 +38,6 @@ class InvoiceForm extends React.Component {
       fcn: "GTECH AUTOMOTIVES",
     };
     this.handleReset = this.handleReset.bind(this);
-
     this.state.items = [
       {
         id: 0,
@@ -75,7 +72,7 @@ class InvoiceForm extends React.Component {
       TACCOPdate: "",
       vmake: "",
       speed: "",
-      fcn: "Gtech Automotives",
+      fcn: "GTECH AUTOMOTIVES",
       items: [
         {
           id: 0,
