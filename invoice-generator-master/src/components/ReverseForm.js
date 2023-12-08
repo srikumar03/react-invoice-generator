@@ -6,12 +6,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import dateFormat from "dateformat";
+import ReverseModel from "./ReverseModel";
 
-// import InvoiceItem from "./InvoiceItem";
-import InvoiceModal from "./InvoiceModal";
-// import InputGroup from "react-bootstrap/InputGroup";
-
-class InvoiceForm extends React.Component {
+class ReverseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +34,7 @@ class InvoiceForm extends React.Component {
       TACCOPdate: "",
       vmake: "",
       speed: "",
-      fcn: "GTECH AUTOMOTIVES",
+      fcn: "MERCYDA",
     };
     this.handleReset = this.handleReset.bind(this);
 
@@ -188,7 +185,7 @@ class InvoiceForm extends React.Component {
     return (
       <Form onSubmit={this.openModal}>
         <div className="one mt-1 mt-md-5 pt-md-5 pt-3">
-          <h2>SLD FITMENT CERTIFICATE GENERATOR</h2>
+          <h2>CAMERA AND REVERSE SENSOR CERTIFICATE GENERATOR</h2>
         </div>
         <Row>
           <Col md={12} lg={12}>
@@ -426,7 +423,7 @@ class InvoiceForm extends React.Component {
                 Fitment Center Name:{" "}
               </Form.Label>
               <Form.Control
-                placeholder={"Eg : GTECH"}
+                placeholder={"Eg : MERCYDA"}
                 value={this.state.fcn}
                 type="text"
                 max={350}
@@ -484,7 +481,7 @@ class InvoiceForm extends React.Component {
               </Col>
             </Row>
             <div className="sticky-top pt-md-3 pt-xl-4">
-              <InvoiceModal
+              <ReverseModel
                 showModal={this.state.isOpen}
                 closeModal={this.closeModal}
                 info={this.state}
@@ -503,4 +500,4 @@ class InvoiceForm extends React.Component {
   }
 }
 
-export default InvoiceForm;
+export default ReverseForm;

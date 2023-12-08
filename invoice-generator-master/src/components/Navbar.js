@@ -9,7 +9,7 @@ function NavBar() {
     <div className="fixed-top">
       <Navbar
         collapseOnSelect
-        expand="lg"
+        expand="md"
         variant="dark"
         className="mx-background-top-linear"
       >
@@ -23,7 +23,16 @@ function NavBar() {
                 className="nav-link"
                 activeClassName="nav-link-active"
               >
-                SLD Certificate
+                SLD
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/camera"
+                className="nav-link"
+                activeClassName="nav-link-active"
+              >
+                Camera Installation
               </NavLink>
             </Nav.Item>
             <Nav.Item>
@@ -32,7 +41,7 @@ function NavBar() {
                 className="nav-link"
                 activeClassName="nav-link-active"
               >
-                Reverse Sensor Certificate
+                Reverse Sensor
               </NavLink>
             </Nav.Item>
           </Nav>
