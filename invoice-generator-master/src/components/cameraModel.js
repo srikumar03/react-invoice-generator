@@ -11,7 +11,7 @@ import jsPDF from "jspdf";
 function GenerateInvoice() {
   const scale = 5; // Adjust the scale factor to increase quality
 
-  html2canvas(document.querySelector("#invoiceCapture1"), {
+  html2canvas(document.querySelector("#invoiceCapture"), {
     scale: scale,
     useCORS: true, // Add this option
     dpi: window.devicePixelRatio * 96,
@@ -59,17 +59,7 @@ class CameraModel extends React.Component {
           size="lg"
           centered
         >
-          <Row className=" p-5" style={{ color: "#4f5e3d" }}>
-            <Col>
-              {" "}
-              <h1>Gtech Automotives</h1>
-            </Col>
-            <Col>
-              Sri Annai Towers. <br /> No. 11, ChinnaMuthu 2nd Street,
-            </Col>
-          </Row>
-
-          <div id="invoiceCapture1 p-5">
+          <div id="invoiceCapture">
             <div className="d-flex flex-row justify-content-between align-items-start w-100 p-4">
               <div className="w-100">
                 <h4 className="fw-bold my-2 text-center" style={customStyle}>

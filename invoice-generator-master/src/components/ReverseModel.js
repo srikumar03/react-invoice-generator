@@ -28,7 +28,7 @@ function GenerateInvoice() {
 
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-    pdf.save("CIC.pdf");
+    pdf.save("RCIC.pdf");
   });
 }
 
@@ -59,7 +59,7 @@ class ReverseModel extends React.Component {
           size="lg"
           centered
         >
-          <div id="invoiceCapture1 p-5">
+          <div id="invoiceCapture1">
             <div className="d-flex flex-row justify-content-between align-items-start w-100 p-4">
               <div className="w-100">
                 <h4 className="fw-bold my-2 text-center" style={customStyle}>
