@@ -3,11 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Container from "react-bootstrap/Container";
 import Pages from "./pages";
+import Login from "./Login";
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isPCView: true,
+      isAuthenticated: false,
     };
   }
 
@@ -21,12 +24,16 @@ class App extends Component {
   }
 
   handleResize = () => {
-    //isPCView based on the window width
+    // isPCView based on the window width
     this.setState({ isPCView: window.innerWidth >= 768 });
   };
 
+  handleLoginSuccess = () => {
+    this.setState({ isAuthenticated: true });
+  };
+
   render() {
-    const { isPCView } = this.state;
+    const { isPCView, isAuthenticated } = this.state;
 
     return (
       <div
@@ -34,40 +41,12 @@ class App extends Component {
           isPCView ? "d-flex" : ""
         } flex-column align-items-center justify-content-center w-100`}
       >
-        {isPCView ? (
+        {isAuthenticated ? (
           <Container>
             <Pages />
           </Container>
         ) : (
-          <div className="non-pc-view">
-            {/* GIF for non-PC views as a clickable link */}
-            <button
-              type="button"
-              onClick={() =>
-                alert(
-                  "Please open this site on a PC or laptop for the optimal experience."
-                )
-              }
-              style={{
-                border: "none",
-                padding: 0,
-                backgroundColor: "transparent",
-                cursor: "pointer",
-              }}
-            >
-              <img
-                src="https://media.giphy.com/media/3oKGzgNfssFG1xlwC4/giphy.gif"
-                alt="Best Viewed on PC or Laptop"
-                style={{ maxWidth: "100%", height: "auto" }}
-              />
-            </button>
-
-            {/* Message for non-PC views */}
-            <p className="text-center mt-3">
-              This content is best viewed on PC or laptop. Click the GIF to view
-              the site on a PC or laptop for the optimal experience.
-            </p>
-          </div>
+          <Login onLoginSuccess={this.handleLoginSuccess} />
         )}
       </div>
     );
