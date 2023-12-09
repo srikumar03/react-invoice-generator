@@ -8,8 +8,8 @@ const Login = ({ onLoginSuccess }) => {
 
   const handleLogin = () => {
     // Replace these with your predefined ID and password
-    const predefinedId = "gtech";
-    const predefinedPassword = "#gta#";
+    const predefinedId = "----";
+    const predefinedPassword = "-----";
 
     if (id === predefinedId && password === predefinedPassword) {
       onLoginSuccess();
