@@ -21,8 +21,8 @@ const Login = ({ onLoginSuccess }) => {
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100 ">
       <div className="login-container p-4">
-        <h2>Welcome Back</h2>
-        <p>Please enter your details</p>
+        <h2>✨Welcome Back✨</h2>
+        <p>Please enter your details </p>
         <div className="mb-3">
           <input
             type="text"
@@ -43,7 +43,7 @@ const Login = ({ onLoginSuccess }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={handleLogin} className="btn btn-primary">
+        <button onClick={handleLogin} className="btn btn-success fw-bold">
           Login
         </button>
       </div>
